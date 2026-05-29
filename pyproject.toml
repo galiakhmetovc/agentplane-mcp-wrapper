@@ -1,0 +1,37 @@
+[project]
+name = "agentplane-mcp-wrapper"
+version = "0.1.0"
+description = "Local MCP stdio wrapper for connecting Codex, Claude, and IDE agents to AgentPlane."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "httpx>=0.28.1",
+    "mcp>=1.27.1",
+]
+
+[project.scripts]
+agentplane-mcp-wrapper = "agentplane_mcp_wrapper.app:main"
+
+[build-system]
+requires = ["uv_build>=0.11.3,<0.12.0"]
+build-backend = "uv_build"
+
+[tool.uv.build-backend]
+module-name = "agentplane_mcp_wrapper"
+
+[dependency-groups]
+dev = [
+    "pytest>=9.0.3",
+    "ruff>=0.15.13",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = ["COM812", "D", "ISC001", "T201"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**/*.py" = ["ANN", "S101"]

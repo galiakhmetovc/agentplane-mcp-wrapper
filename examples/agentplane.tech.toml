@@ -1,0 +1,21 @@
+# Ready-to-use local MCP wrapper config for the public AgentPlane demo.
+# The token cache is stored outside the repository and contains short-lived user tokens.
+
+[mcp_local]
+gateway_url = "https://mcp.agentplane.tech/mcp"
+client_name = "agentplane-mcp-wrapper"
+client_type = "local-wrapper"
+token_cache_path = "~/.agentplane/mcp-wrapper-token.json"
+auto_device_login = true
+login_flow = "device_code"
+login_timeout_seconds = 300
+request_timeout_seconds = 30
+
+[mcp_local.oidc]
+issuer = "https://agentplane.tech/idp/realms/demo"
+server_metadata_url = "https://agentplane.tech/idp/realms/demo/.well-known/openid-configuration"
+client_id = "agent-control-plane-mcp-local"
+audience = "agent-control-plane-mcp"
+scopes = ["openid", "mcp:tools"]
+redirect_host = "127.0.0.1"
+redirect_port = 8599
